@@ -13,7 +13,7 @@ The goals of the first version of `api.archive.org` are to:
 ## General Plan and resourcing
 
 Version 1.0 will be delivered in a series of half-month sprints starting 
-April 1 and going through ... 
+April 1 and going through May 31.
 
 Will Fitzgerald (WF) of the Internet Archive will lead the effort, and spend half
 time (0.5 FTE) on it. Michael (Mek) Karpeles will consult with approximately 
