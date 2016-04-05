@@ -39,6 +39,7 @@ Tasks:
   - design and beauty
   - discoverabilty
 - Report and recommend documentation method
+- Make initial list of APIs
   
 ## Sprint 2: Implementing 1/3 of APIs, Investigating AUTH (April 16-30)
 
