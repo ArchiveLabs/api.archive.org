@@ -27,7 +27,7 @@ As much as possible, progress and design will happen in the open at the [api rep
 
 Tasks:
 
-- Compare PHP/Python/Go endpoints on:
+- Compare PHP/Python/Go/Kong endpoints on:
   - Ease of integration
   - latency
   - number of concurrent sessions
