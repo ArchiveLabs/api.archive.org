@@ -27,7 +27,7 @@ As much as possible, progress and design will happen in the open at the [api rep
 
 Tasks:
 
-- Compare PHP/Python/Go endpoints on:
+- Compare PHP/Python/Go/Kong endpoints on:
   - Ease of integration
   - latency
   - number of concurrent sessions
@@ -39,6 +39,7 @@ Tasks:
   - design and beauty
   - discoverabilty
 - Report and recommend documentation method
+- Make initial list of APIs
   
 ## Sprint 2: Implementing 1/3 of APIs, Investigating AUTH (April 16-30)
 
