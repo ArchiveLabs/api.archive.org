@@ -1,237 +1,265 @@
 {
-    "swagger": "2.0",
-    "info": {
-        "version": "1.0.0",
-        "title": "Search Services",
-        "description": "#### Search services\nArchive.org Search API\n"
-    },
-    "schemes": [
-        "https"
-    ],
-    "host": "archive.org",
-    "basePath": "/services/search/beta",
-    "paths": {
-        "/scrape.php": {
-            "post": {
-                "responses": {
-                    "200": {
-                        "description": "Scaping API",
-                        "schema": {
-                            "$ref": "#/definitions/ScrapeResult"
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
-                        }
-                    }
-                },
-                "parameters": [
-                    {
-                        "name": "q",
-                        "in": "query",
-                        "description": "Lucene-type search query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "fields",
-                        "in": "query",
-                        "description": "Metadata fields, comma delimited",
-                        "type": "string",
-                        "default": "identifier",
-                        "required": false,
-                        "minLength": 1,
-                        "maxLength": 250
-                    },
-                    {
-                        "name": "sorts",
-                        "in": "query",
-                        "description": "sort collations, comma delimited",
-                        "type": "string",
-                        "required": false,
-                        "minLength": 5,
-                        "maxLength": 250
-                    },
-                    {
-                        "name": "size",
-                        "in": "query",
-                        "description": "Number of query results to return",
-                        "type": "integer",
-                        "minimum": 10,
-                        "maximum": 10000,
-                        "default": 1000,
-                        "required": false
-                    },
-                    {
-                        "name": "cursor",
-                        "in": "query",
-                        "description": "Cursor for scrolling (used for subsequent calls)",
-                        "type": "string",
-                        "required": false
-                    },
-                    {
-                        "name": "total_only",
-                        "in": "query",
-                        "description": "Request total only; do not return hits",
-                        "type": "bool",
-                        "default": false,
-                        "required": false
-                    },
-                    {
-                        "name": "key",
-                        "in": "formData",
-                        "description": "S3 key",
-                        "type": "string",
-                        "required": false
-                    }
-                ]
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Wayback API",
+    "description": "API for Internet Archive's Wayback Machine"
+  },
+  "host": "api.archive.org",
+  "schemes": [
+    "https"
+  ],
+  "basePath": "/wayback/v1",
+  "produces": [
+    "application/json",
+    "applicaiton/javascript"
+  ],
+  "paths": {
+    "/available": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ArchivedResult"
             }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
         },
-        "/organic.php": {
-            "post": {
-                "responses": {
-                    "200": {
-                        "description": "Organic Search API. Returns results in descending relevance order",
-                        "schema": {
-                            "$ref": "#/definitions/OrganicResult"
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
-                        }
-                    }
-                },
-                "parameters": [
-                    {
-                        "name": "q",
-                        "in": "query",
-                        "description": "Lucene-type search query",
-                        "type": "string"
-                    },
-                    {
-                        "name": "fields",
-                        "in": "query",
-                        "description": "Metadata fields, comma delimited",
-                        "type": "string",
-                        "default": "identifier",
-                        "required": false,
-                        "minLength": 1,
-                        "maxLength": 250
-                    },
-                    {
-                        "name": "size",
-                        "in": "query",
-                        "description": "Number of query results to return",
-                        "type": "integer",
-                        "minimum": 1,
-                        "maximum": 10000,
-                        "default": 100,
-                        "required": false
-                    },
-                    {
-                        "name": "key",
-                        "in": "formData",
-                        "description": "S3 key",
-                        "type": "string",
-                        "required": false
-                    }
-                ]
-            }
-        },
-        "/fields.php": {
-            "get": {
-                "responses": {
-                    "200": {
-                        "description": "Fields that can be requested",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/Field"
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    },
-    "definitions": {
-        "Cursor": {
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
             "type": "string",
-            "description": "A scroll handle"
-        },
-        "Field": {
+            "description": "A single URL to query.",
+            "required": true
+          },
+          {
+            "name": "closest",
+            "in": "query",
+            "description": "The direction specifies whether to match archived timestamps that are before the provided one, after, or the default either (closest in either direction). Must be before, after, or either. May be overidden by individual requests.\n",
+            "default": "either",
             "type": "string",
-            "description": "The name of a field"
-        },
-        "Hit": {
-            "type": "object",
-            "description": "One item returned (object of fields and values)"
-        },
-        "ScrapeResult": {
-            "type": "object",
-            "description": "The result of a scrape request",
-            "properties": {
-                "cursor": {
-                    "$ref": "#/definitions/Cursor"
-                },
-                "previous": {
-                    "$ref": "#/definitions/Cursor"
-                },
-                "count": {
-                    "description": "Number of results returned",
-                    "type": "integer",
-                    "minimum": 0,
-                    "maximum": 10000
-                },
-                "total": {
-                    "description": "Total number of results from this cursor point",
-                    "type": "integer",
-                    "minimum": 0
-                },
-                "items": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Hit"
-                    }
-                }
+            "enum": [
+              "either",
+              "before",
+              "after"
+            ],
+            "required": false
+          },
+          {
+            "name": "timestamp",
+            "description": "Timestamp requested in RFC3339 format (For example, YYYY-MM-DDTHH:MM:SSz)\n",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "callback",
+            "description": "\tSpecifies a JavaScript function func, for a JSON-P response. When provided, results are wrapped as `callback(data)`, and the returned MIME type is application/javascript. This causes the caller to automatically run the func with the JSON results as its argument.\n",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "timeout",
+            "description": "Timeout is the maximum number of seconds to wait for the availability API to get its underlying results from the CDX server. The default value is 5.0.\n",
+            "in": "query",
+            "type": "number",
+            "required": false,
+            "default": 5
+          },
+          {
+            "name": "status_code",
+            "description": "HTTP status codes to filter by. Only results with these codes will be returned\n",
+            "in": "query",
+            "type": "integer",
+            "required": false,
+            "collectionFormat": "multi"
+          }
+        ]
+      },
+      "post": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/AvailabilityResults"
             }
-        },
-        "OrganicResult": {
-            "type": "object",
-            "description": "The result of a organic search request",
-            "properties": {
-                "count": {
-                    "description": "Number of results returned",
-                    "type": "integer",
-                    "minimum": 0,
-                    "maximum": 10000
-                },
-                "total": {
-                    "description": "Approximate number of results meeting query",
-                    "type": "integer",
-                    "minimum": 0
-                },
-                "items": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Hit"
-                    }
-                }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
             }
+          }
         },
-        "Error": {
-            "properties": {
-                "code": {
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "message": {
-                    "type": "string"
-                }
+        "parameters": [
+          {
+            "name": "closest",
+            "in": "query",
+            "description": "The direction specifies whether to match archived timestamps that are before the provided one, after, or the default either (closest in either direction). Must be before, after, or either. May be overidden by individual requests. May be overridden in individual requests\n",
+            "default": "either",
+            "type": "string",
+            "enum": [
+              "either",
+              "before",
+              "after"
+            ],
+            "required": false
+          },
+          {
+            "name": "timestamp",
+            "description": "Timestamp requested in RFC3339 format (For example, YYYY-MM-DDTHH:MM:SSz)\n  May be overridden in individual requests\n",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "callback",
+            "description": "\tSpecifies a JavaScript function func, for a JSON-P response. When provided, results are wrapped as `callback(data)`, and the returned MIME type is application/javascript. This causes the caller to automatically run the func with the JSON results as its argument.\n",
+            "in": "query",
+            "type": "string",
+            "required": false
+          },
+          {
+            "name": "timeout",
+            "description": "Timeout is the maximum number of seconds to wait for the availability API to get its underlying results from the CDX server. The default value is 5.0.\n",
+            "in": "query",
+            "type": "number",
+            "required": false,
+            "default": 5
+          },
+          {
+            "name": "status_code",
+            "description": "HTTP status codes to filter by. Only results with these codes will be returned\n",
+            "in": "query",
+            "type": "integer",
+            "required": false,
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "availabilty_request",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/AvailabilityRequests"
             }
-        }
+          }
+        ]
+      }
     }
+  },
+  "definitions": {
+    "ArchivedSnapshot": {
+      "type": "object",
+      "properties": {
+        "closest": {
+          "$ref": "#/definitions/Closest"
+        }
+      }
+    },
+    "Closest": {
+      "type": "object",
+      "properties": {
+        "available": {
+          "type": "boolean",
+          "description": "Is the URL available?"
+        },
+        "url": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string",
+          "description": "Timestamp in YYYYMMDDHHmmSS format"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "AvailabilityResults": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ArchivedResult"
+          }
+        }
+      },
+      "required": [
+        "results"
+      ]
+    },
+    "ArchivedResult": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        },
+        "archived_snapshot": {
+          "$ref": "#/definitions/ArchivedSnapshot"
+        }
+      },
+      "required": [
+        "url",
+        "timestamp",
+        "archived_snapshot"
+      ]
+    },
+    "AvailabilityRequests": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/AvailabilityRequest"
+      }
+    },
+    "AvailabilityRequest": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string"
+        },
+        "tag": {
+          "type": "string"
+        },
+        "closest": {
+          "type": "string",
+          "enum": [
+            "either",
+            "after",
+            "before"
+          ]
+        }
+      },
+      "required": [
+        "url"
+      ]
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "integer"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
 }
