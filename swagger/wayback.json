@@ -1,265 +1,264 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "version": "1.0.0",
-    "title": "Wayback API",
-    "description": "API for Internet Archive's Wayback Machine"
-  },
-  "host": "api.archive.org",
-  "schemes": [
-    "https"
-  ],
-  "basePath": "/wayback/v1",
-  "produces": [
-    "application/json",
-    "applicaiton/javascript"
-  ],
-  "paths": {
-    "/available": {
-      "get": {
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/ArchivedResult"
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Wayback API",
+        "description": "API for Internet Archive's Wayback Machine"
+    },
+    "host": "api.archive.org",
+    "schemes": [
+        "https"
+    ],
+    "basePath": "/wayback/v1",
+    "produces": [
+        "application/json",
+        "applicaiton/javascript"
+    ],
+    "paths": {
+        "/available": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/ArchivedResult"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/url"
+                    },
+                    {
+                        "$ref": "#/parameters/timestamp"
+                    },
+                    {
+                        "$ref": "#/parameters/callback"
+                    },
+                    {
+                        "$ref": "#/parameters/timeout"
+                    },
+                    {
+                        "$ref": "#/parameters/closest"
+                    },
+                    {
+                        "$ref": "#/parameters/status_list"
+                    }
+                ]
+            },
+            "post": {
+                "consumes": [
+                    "application/json",
+                    "text/csv",
+                    "application/x-www-form-urlencoded"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/AvailabilityResults"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/url"
+                    },
+                    {
+                        "$ref": "#/parameters/timestamp"
+                    },
+                    {
+                        "$ref": "#/parameters/callback"
+                    },
+                    {
+                        "$ref": "#/parameters/timeout"
+                    },
+                    {
+                        "$ref": "#/parameters/closest"
+                    },
+                    {
+                        "$ref": "#/parameters/status_list"
+                    },
+                    {
+                        "name": "availabilty_request",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/definitions/AvailabilityRequests"
+                        }
+                    }
+                ]
             }
-          },
-          "default": {
-            "description": "Unexpected error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
-        },
-        "parameters": [
-          {
+        }
+    },
+    "parameters": {
+        "url": {
             "name": "url",
             "in": "query",
             "type": "string",
             "description": "A single URL to query.",
             "required": true
-          },
-          {
+        },
+        "closest": {
             "name": "closest",
             "in": "query",
             "description": "The direction specifies whether to match archived timestamps that are before the provided one, after, or the default either (closest in either direction). Must be before, after, or either. May be overidden by individual requests.\n",
             "default": "either",
             "type": "string",
             "enum": [
-              "either",
-              "before",
-              "after"
+                "either",
+                "before",
+                "after"
             ],
             "required": false
-          },
-          {
+        },
+        "timestamp": {
             "name": "timestamp",
-            "description": "Timestamp requested in RFC3339 format (For example, YYYY-MM-DDTHH:MM:SSz)\n",
+            "description": "Timestamp requested in ISO 8601 format. The following formats are acceptable:\n - YYYY\n - YYYY-MM\n - YYYY-MM-DD\n - YYYY-MM-DDTHH:mm:SSz\n - YYYY-MM-DD:HH:mm+00:00\n",
             "in": "query",
             "type": "string",
             "required": false
-          },
-          {
+        },
+        "callback": {
             "name": "callback",
             "description": "\tSpecifies a JavaScript function func, for a JSON-P response. When provided, results are wrapped as `callback(data)`, and the returned MIME type is application/javascript. This causes the caller to automatically run the func with the JSON results as its argument.\n",
             "in": "query",
             "type": "string",
             "required": false
-          },
-          {
+        },
+        "timeout": {
             "name": "timeout",
             "description": "Timeout is the maximum number of seconds to wait for the availability API to get its underlying results from the CDX server. The default value is 5.0.\n",
             "in": "query",
             "type": "number",
             "required": false,
             "default": 5
-          },
-          {
-            "name": "status_code",
+        },
+        "status_list": {
+            "name": "status_list",
             "description": "HTTP status codes to filter by. Only results with these codes will be returned\n",
             "in": "query",
-            "type": "integer",
-            "required": false,
-            "collectionFormat": "multi"
-          }
-        ]
-      },
-      "post": {
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/AvailabilityResults"
+            "type": "string",
+            "required": false
+        }
+    },
+    "definitions": {
+        "ArchivedSnapshot": {
+            "type": "object",
+            "properties": {
+                "closest": {
+                    "$ref": "#/definitions/Closest"
+                }
             }
-          },
-          "default": {
-            "description": "Unexpected error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
         },
-        "parameters": [
-          {
-            "name": "closest",
-            "in": "query",
-            "description": "The direction specifies whether to match archived timestamps that are before the provided one, after, or the default either (closest in either direction). Must be before, after, or either. May be overidden by individual requests. May be overridden in individual requests\n",
-            "default": "either",
-            "type": "string",
-            "enum": [
-              "either",
-              "before",
-              "after"
-            ],
-            "required": false
-          },
-          {
-            "name": "timestamp",
-            "description": "Timestamp requested in RFC3339 format (For example, YYYY-MM-DDTHH:MM:SSz)\n  May be overridden in individual requests\n",
-            "in": "query",
-            "type": "string",
-            "required": false
-          },
-          {
-            "name": "callback",
-            "description": "\tSpecifies a JavaScript function func, for a JSON-P response. When provided, results are wrapped as `callback(data)`, and the returned MIME type is application/javascript. This causes the caller to automatically run the func with the JSON results as its argument.\n",
-            "in": "query",
-            "type": "string",
-            "required": false
-          },
-          {
-            "name": "timeout",
-            "description": "Timeout is the maximum number of seconds to wait for the availability API to get its underlying results from the CDX server. The default value is 5.0.\n",
-            "in": "query",
-            "type": "number",
-            "required": false,
-            "default": 5
-          },
-          {
-            "name": "status_code",
-            "description": "HTTP status codes to filter by. Only results with these codes will be returned\n",
-            "in": "query",
-            "type": "integer",
-            "required": false,
-            "collectionFormat": "multi"
-          },
-          {
-            "name": "availabilty_request",
-            "in": "body",
-            "schema": {
-              "$ref": "#/definitions/AvailabilityRequests"
+        "Closest": {
+            "type": "object",
+            "properties": {
+                "available": {
+                    "type": "boolean",
+                    "description": "Is the URL available?"
+                },
+                "url": {
+                    "type": "string"
+                },
+                "timestamp": {
+                    "type": "string",
+                    "description": "Timestamp in YYYYMMDDHHmmSS format"
+                },
+                "status": {
+                    "type": "string"
+                }
             }
-          }
-        ]
-      }
+        },
+        "AvailabilityResults": {
+            "type": "object",
+            "properties": {
+                "results": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ArchivedResult"
+                    }
+                }
+            },
+            "required": [
+                "results"
+            ]
+        },
+        "ArchivedResult": {
+            "type": "object",
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "timestamp": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                },
+                "archived_snapshot": {
+                    "$ref": "#/definitions/ArchivedSnapshot"
+                }
+            },
+            "required": [
+                "url",
+                "timestamp",
+                "archived_snapshot"
+            ]
+        },
+        "AvailabilityRequests": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/AvailabilityRequest"
+            }
+        },
+        "AvailabilityRequest": {
+            "type": "object",
+            "properties": {
+                "url": {
+                    "type": "string"
+                },
+                "timestamp": {
+                    "type": "string"
+                },
+                "tag": {
+                    "type": "string"
+                },
+                "closest": {
+                    "type": "string",
+                    "enum": [
+                        "either",
+                        "after",
+                        "before"
+                    ]
+                }
+            },
+            "required": [
+                "url"
+            ]
+        },
+        "Error": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "integer",
+                    "format": "integer"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
     }
-  },
-  "definitions": {
-    "ArchivedSnapshot": {
-      "type": "object",
-      "properties": {
-        "closest": {
-          "$ref": "#/definitions/Closest"
-        }
-      }
-    },
-    "Closest": {
-      "type": "object",
-      "properties": {
-        "available": {
-          "type": "boolean",
-          "description": "Is the URL available?"
-        },
-        "url": {
-          "type": "string"
-        },
-        "timestamp": {
-          "type": "string",
-          "description": "Timestamp in YYYYMMDDHHmmSS format"
-        },
-        "status": {
-          "type": "string"
-        }
-      }
-    },
-    "AvailabilityResults": {
-      "type": "object",
-      "properties": {
-        "results": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/ArchivedResult"
-          }
-        }
-      },
-      "required": [
-        "results"
-      ]
-    },
-    "ArchivedResult": {
-      "type": "object",
-      "properties": {
-        "url": {
-          "type": "string"
-        },
-        "timestamp": {
-          "type": "string"
-        },
-        "tag": {
-          "type": "string"
-        },
-        "archived_snapshot": {
-          "$ref": "#/definitions/ArchivedSnapshot"
-        }
-      },
-      "required": [
-        "url",
-        "timestamp",
-        "archived_snapshot"
-      ]
-    },
-    "AvailabilityRequests": {
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/AvailabilityRequest"
-      }
-    },
-    "AvailabilityRequest": {
-      "type": "object",
-      "properties": {
-        "url": {
-          "type": "string"
-        },
-        "timestamp": {
-          "type": "string"
-        },
-        "tag": {
-          "type": "string"
-        },
-        "closest": {
-          "type": "string",
-          "enum": [
-            "either",
-            "after",
-            "before"
-          ]
-        }
-      },
-      "required": [
-        "url"
-      ]
-    },
-    "Error": {
-      "type": "object",
-      "properties": {
-        "code": {
-          "type": "integer",
-          "format": "integer"
-        },
-        "message": {
-          "type": "string"
-        }
-      }
-    }
-  }
 }
