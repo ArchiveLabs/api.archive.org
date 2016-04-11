@@ -19,10 +19,7 @@
             "get": {
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/ArchivedResult"
-                        }
+                        "$ref": "#/responses/AvailabilityResults"
                     },
                     "default": {
                         "description": "Unexpected error",
@@ -49,6 +46,9 @@
                     },
                     {
                         "$ref": "#/parameters/status_list"
+                    },
+                    {
+                        "$ref": "#/parameters/tag"
                     }
                 ]
             },
@@ -60,10 +60,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
-                        "schema": {
-                            "$ref": "#/definitions/AvailabilityResults"
-                        }
+                        "$ref": "#/responses/AvailabilityResults"
                     },
                     "default": {
                         "description": "Unexpected error",
@@ -90,6 +87,9 @@
                     },
                     {
                         "$ref": "#/parameters/status_list"
+                    },
+                    {
+                        "$ref": "#/parameters/tag"
                     },
                     {
                         "name": "availabilty_request",
@@ -132,7 +132,7 @@
         },
         "callback": {
             "name": "callback",
-            "description": "\tSpecifies a JavaScript function func, for a JSON-P response. When provided, results are wrapped as `callback(data)`, and the returned MIME type is application/javascript. This causes the caller to automatically run the func with the JSON results as its argument.\n",
+            "description": "Specifies a JavaScript function func, for a JSON-P response. When provided, results are wrapped as `callback(data)`, and the returned MIME type is application/javascript. This causes the caller to automatically run the func with the JSON results as its argument.\n",
             "in": "query",
             "type": "string",
             "required": false
@@ -148,6 +148,13 @@
         "status_list": {
             "name": "status_list",
             "description": "HTTP status codes to filter by. Only results with these codes will be returned\n",
+            "in": "query",
+            "type": "string",
+            "required": false
+        },
+        "tag": {
+            "name": "tag",
+            "description": "The optional tag can have any value, and is returned with the results; it can be used to help collate input and output values.\n",
             "in": "query",
             "type": "string",
             "required": false
@@ -257,6 +264,45 @@
                 },
                 "message": {
                     "type": "string"
+                }
+            }
+        }
+    },
+    "responses": {
+        "AvailabilityResults": {
+            "description": "Nominal Availability results",
+            "schema": {
+                "$ref": "#/definitions/AvailabilityResults"
+            },
+            "examples": {
+                "applcation/json": {
+                    "results": [
+                        {
+                            "url": "http://www.cnn.com/",
+                            "archived_snapshots": {
+                                "closest": {
+                                    "status": "200",
+                                    "available": true,
+                                    "url": "http://web.archive.org/web/20160411191141/http://www.cnn.com/",
+                                    "timestamp": "20160411191141"
+                                }
+                            },
+                            "tag": "1"
+                        },
+                        {
+                            "url": "http://www.entish.org",
+                            "timestamp": "20160407193918",
+                            "archived_snapshots": {
+                                "closest": {
+                                    "status": "200",
+                                    "available": true,
+                                    "url": "http://web.archive.org/web/20160111075133/http://entish.org/",
+                                    "timestamp": "20160111075133"
+                                },
+                                "tag": "0"
+                            }
+                        }
+                    ]
                 }
             }
         }
