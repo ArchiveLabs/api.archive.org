@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <title>Wayback API</title>
+</head>
+<body>
+<div class="container">
+    <h1>Wayback API</h1>
+    <p><p>API for Internet Archive&#39;s Wayback Machine</p>
+    </p>
+    
+        <div id="sw-default-produces" class="sw-default-value">
+            <span class="sw-default-value-header">Default response content-types:</span>
+            application/json, application/javascript
+        </div>
+    
+    <div id="sw-schemes" class="sw-default-value">
+        <span class="sw-default-value-header">Schemes:</span>
+        https
+    </div>
+    
+        <h2 id="swagger--summary-no-tags">Summary</h2>
+        <table class="table table-bordered table-condensed swagger--summary">
+            <thead>
+            <tr>
+                <th>Path</th>
+                <th>Operation</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                            <td class="swagger--summary-path" rowspan="2">
+                                <a href="#path--wayback-v1-available">/wayback/v1/available</a>
+                            </td>
+                        <td>
+                            <a href="#operation--wayback-v1-available-get">GET</a>
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="#operation--wayback-v1-available-post">POST</a>
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+    
+    
+    
+    <h2>Paths</h2>
+    
+        
+        <span id="path--wayback-v1-available"></span>
+            <div id="operation--wayback-v1-available-get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary"></div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/wayback/v1/available</strong></h3>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        
+                    </section>
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                url
+                                            <td><p>A single URL to query.</p>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/url">#/parameters/url</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                timestamp
+                                            <td><p>Timestamp requested in ISO 8601 format. The following formats are acceptable:</p>
+                                        <ul>
+                                        <li>YYYY</li>
+                                        <li>YYYY-MM</li>
+                                        <li>YYYY-MM-DD</li>
+                                        <li>YYYY-MM-DDTHH:mm:SSz</li>
+                                        <li>YYYY-MM-DD:HH:mm+00:00</li>
+                                        </ul>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/timestamp">#/parameters/timestamp</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                callback
+                                            <td><p>Specifies a JavaScript function func, for a JSON-P response. When provided, results are wrapped as <code>callback(data)</code>, and the returned MIME type is application/javascript. This causes the caller to automatically run the func with the JSON results as its argument.</p>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/callback">#/parameters/callback</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                timeout
+                                            <td><p>Timeout is the maximum number of seconds to wait for the availability API to get its underlying results from the CDX server. The default value is 5.0.</p>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">number</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                                <span class="json-property-default-value">5</span>
+                                            </td>
+                                            <td>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/timeout">#/parameters/timeout</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                closest
+                                            <td><p>The direction specifies whether to match archived timestamps that are before the provided one, after, or the default either (closest in either direction). Must be before, after, or either. May be overidden by individual requests.</p>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">string</span>    <span class="json-property-enum" title="Possible values">, x &isin; {
+                                                        <span class="json-property-enum-item">either</span>
+                                                        (default)
+                                                    ,
+                                                        <span class="json-property-enum-item">before</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">after</span>
+                                                    
+                                                }
+                                                </span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/closest">#/parameters/closest</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                status_code
+                                            <td><p>HTTP status codes to filter by. Only results with these codes will be returned</p>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">integer</span>    <span class="json-property-enum" title="Possible values">, x &isin; {
+                                                        <span class="json-property-enum-item">200</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">201</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">202</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">203</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">204</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">205</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">206</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">300</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">301</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">302</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">303</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">304</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">305</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">306</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">307</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">308</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">400</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">401</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">402</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">403</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">404</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">405</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">406</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">407</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">408</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">409</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">410</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">411</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">412</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">413</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">414</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">415</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">416</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">417</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">418</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">421</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">426</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">428</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">429</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">431</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">500</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">501</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">502</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">503</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">504</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">505</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">506</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">507</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">511</span>
+                                                    
+                                                }
+                                                </span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                        <span class="sw-param-collection-format">, 
+                                                        multiple parameters (<code>status_code=aaa&amp;status_code=bbb</code>)
+                                                    </span>    </td>
+                                            <td>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/status_code">#/parameters/status_code</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                tag
+                                            <td><p>The optional tag can have any value, and is returned with the results; it can be used to help collate input and output values.</p>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/tag">#/parameters/tag</a></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                                <p><a href="#sw-default-produces">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> <span class="label label-default">application/javascript</span> 
+                                </p>
+                            
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                            <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/responses/AvailabilityResults">#/responses/AvailabilityResults</a></span>
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Nominal Availability results</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                    <div class="col-md-6 sw-response-examples">
+                                                        <div class="label label-default">Example for applcation/json</div>
+                                                        <pre><code class="lang-json">{<br>    &quot;<span class="hljs-attribute">results</span>&quot;: <span class="hljs-value">[<br>        {<br>            &quot;<span class="hljs-attribute">snapshot</span>&quot;: <span class="hljs-value">{<br>                &quot;<span class="hljs-attribute">status</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;200&quot;</span></span>,<br>                &quot;<span class="hljs-attribute">timestamp</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;2016-04-07T19:39:18Z&quot;</span></span>,<br>                &quot;<span class="hljs-attribute">url</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;http://web.archive.org/web/20160111075133/http://entish.org/&quot;</span><br>            </span>}</span>,<br>            &quot;<span class="hljs-attribute">tag</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;0&quot;</span></span>,<br>            &quot;<span class="hljs-attribute">timestamp</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;2016-04-07T19:39:18Z&quot;</span></span>,<br>            &quot;<span class="hljs-attribute">url</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;http://www.entish.org&quot;</span><br>        </span>},<br>        {<br>            &quot;<span class="hljs-attribute">snapshot</span>&quot;: <span class="hljs-value">{<br>                &quot;<span class="hljs-attribute">timestamp</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;2016-04-13T13:20:39Z&quot;</span></span>,<br>                &quot;<span class="hljs-attribute">url</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;http://web.archive.org/web/20160413132039/http://www.cnn.com/&quot;</span><br>            </span>}</span>,<br>            &quot;<span class="hljs-attribute">tag</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;1&quot;</span></span>,<br>            &quot;<span class="hljs-attribute">url</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;http://www.cnn.com/&quot;</span><br>        </span>},<br>        {<br>            &quot;<span class="hljs-attribute">snapshot</span>&quot;: <span class="hljs-value">{<br>            }</span>,<br>            &quot;<span class="hljs-attribute">tag</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;2&quot;</span></span>,<br>            &quot;<span class="hljs-attribute">timestamp</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;2016-04-07T19:39:18Z&quot;</span></span>,<br>            &quot;<span class="hljs-attribute">url</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;http://www.youcantfindthis.cat&quot;</span><br>        </span>}<br>    ]<br></span>}
+                                            </code></pre>
+                                            
+                                                    </div>
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                                <div  class="panel panel-definition">
+                                                    <div class="panel-body">
+                                                                <a class="json-schema-ref" href="#/definitions/AvailabilityResults">AvailabilityResults</a>
+                                                    </div>
+                                                </div></div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected error</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                                <div  class="panel panel-definition">
+                                                    <div class="panel-body">
+                                                                <a class="json-schema-ref" href="#/definitions/Error">Error</a>
+                                                    </div>
+                                                </div></div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                </div>
+            </div>    <div id="operation--wayback-v1-available-post" class="swagger--panel-operation-post panel">
+                <div class="panel-heading">
+                    <div class="operation-summary"></div>
+                    <h3 class="panel-title"><span class="operation-name">POST</span> <strong>/wayback/v1/available</strong></h3>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        
+                    </section>
+                        
+                            <section class="sw-request-body">
+                                
+                                    <p><span class="label label-default">application/json</span> <span class="label label-default">text/csv</span> <span class="label label-default">application/x-www-form-urlencoded</span> 
+                        </p>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p></p>
+                                            </div>
+                                            <div class="col-md-6 sw-request-model">
+                            <div  class="panel panel-definition">
+                                <div class="panel-body">
+                                            <a class="json-schema-ref" href="#/definitions/AvailabilityRequests">AvailabilityRequests</a>
+                                </div>
+                            </div></div>
+                                        </div>
+                            </section>        
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                url
+                                            <td><p>A single URL to query.</p>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="json-property-required"></span>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/url">#/parameters/url</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                timestamp
+                                            <td><p>Timestamp requested in ISO 8601 format. The following formats are acceptable:</p>
+                                        <ul>
+                                        <li>YYYY</li>
+                                        <li>YYYY-MM</li>
+                                        <li>YYYY-MM-DD</li>
+                                        <li>YYYY-MM-DDTHH:mm:SSz</li>
+                                        <li>YYYY-MM-DD:HH:mm+00:00</li>
+                                        </ul>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/timestamp">#/parameters/timestamp</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                callback
+                                            <td><p>Specifies a JavaScript function func, for a JSON-P response. When provided, results are wrapped as <code>callback(data)</code>, and the returned MIME type is application/javascript. This causes the caller to automatically run the func with the JSON results as its argument.</p>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/callback">#/parameters/callback</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                timeout
+                                            <td><p>Timeout is the maximum number of seconds to wait for the availability API to get its underlying results from the CDX server. The default value is 5.0.</p>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">number</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                                <span class="json-property-default-value">5</span>
+                                            </td>
+                                            <td>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/timeout">#/parameters/timeout</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                closest
+                                            <td><p>The direction specifies whether to match archived timestamps that are before the provided one, after, or the default either (closest in either direction). Must be before, after, or either. May be overidden by individual requests.</p>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">string</span>    <span class="json-property-enum" title="Possible values">, x &isin; {
+                                                        <span class="json-property-enum-item">either</span>
+                                                        (default)
+                                                    ,
+                                                        <span class="json-property-enum-item">before</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">after</span>
+                                                    
+                                                }
+                                                </span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/closest">#/parameters/closest</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                status_code
+                                            <td><p>HTTP status codes to filter by. Only results with these codes will be returned</p>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">integer</span>    <span class="json-property-enum" title="Possible values">, x &isin; {
+                                                        <span class="json-property-enum-item">200</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">201</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">202</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">203</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">204</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">205</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">206</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">300</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">301</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">302</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">303</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">304</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">305</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">306</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">307</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">308</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">400</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">401</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">402</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">403</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">404</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">405</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">406</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">407</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">408</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">409</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">410</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">411</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">412</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">413</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">414</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">415</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">416</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">417</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">418</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">421</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">426</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">428</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">429</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">431</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">500</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">501</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">502</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">503</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">504</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">505</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">506</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">507</span>
+                                                    ,
+                                                        <span class="json-property-enum-item">511</span>
+                                                    
+                                                }
+                                                </span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                        <span class="sw-param-collection-format">, 
+                                                        multiple parameters (<code>status_code=aaa&amp;status_code=bbb</code>)
+                                                    </span>    </td>
+                                            <td>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/status_code">#/parameters/status_code</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                tag
+                                            <td><p>The optional tag can have any value, and is returned with the results; it can be used to help collate input and output values.</p>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/tag">#/parameters/tag</a></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                                <p><a href="#sw-default-produces">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> <span class="label label-default">application/javascript</span> 
+                                </p>
+                            
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                            <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/responses/AvailabilityResults">#/responses/AvailabilityResults</a></span>
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Nominal Availability results</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                    <div class="col-md-6 sw-response-examples">
+                                                        <div class="label label-default">Example for applcation/json</div>
+                                                        <pre><code class="lang-json">{<br>    &quot;<span class="hljs-attribute">results</span>&quot;: <span class="hljs-value">[<br>        {<br>            &quot;<span class="hljs-attribute">snapshot</span>&quot;: <span class="hljs-value">{<br>                &quot;<span class="hljs-attribute">status</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;200&quot;</span></span>,<br>                &quot;<span class="hljs-attribute">timestamp</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;2016-04-07T19:39:18Z&quot;</span></span>,<br>                &quot;<span class="hljs-attribute">url</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;http://web.archive.org/web/20160111075133/http://entish.org/&quot;</span><br>            </span>}</span>,<br>            &quot;<span class="hljs-attribute">tag</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;0&quot;</span></span>,<br>            &quot;<span class="hljs-attribute">timestamp</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;2016-04-07T19:39:18Z&quot;</span></span>,<br>            &quot;<span class="hljs-attribute">url</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;http://www.entish.org&quot;</span><br>        </span>},<br>        {<br>            &quot;<span class="hljs-attribute">snapshot</span>&quot;: <span class="hljs-value">{<br>                &quot;<span class="hljs-attribute">timestamp</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;2016-04-13T13:20:39Z&quot;</span></span>,<br>                &quot;<span class="hljs-attribute">url</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;http://web.archive.org/web/20160413132039/http://www.cnn.com/&quot;</span><br>            </span>}</span>,<br>            &quot;<span class="hljs-attribute">tag</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;1&quot;</span></span>,<br>            &quot;<span class="hljs-attribute">url</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;http://www.cnn.com/&quot;</span><br>        </span>},<br>        {<br>            &quot;<span class="hljs-attribute">snapshot</span>&quot;: <span class="hljs-value">{<br>            }</span>,<br>            &quot;<span class="hljs-attribute">tag</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;2&quot;</span></span>,<br>            &quot;<span class="hljs-attribute">timestamp</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;2016-04-07T19:39:18Z&quot;</span></span>,<br>            &quot;<span class="hljs-attribute">url</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;http://www.youcantfindthis.cat&quot;</span><br>        </span>}<br>    ]<br></span>}
+                                            </code></pre>
+                                            
+                                                    </div>
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                                <div  class="panel panel-definition">
+                                                    <div class="panel-body">
+                                                                <a class="json-schema-ref" href="#/definitions/AvailabilityResults">AvailabilityResults</a>
+                                                    </div>
+                                                </div></div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected error</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                                <div  class="panel panel-definition">
+                                                    <div class="panel-body">
+                                                                <a class="json-schema-ref" href="#/definitions/Error">Error</a>
+                                                    </div>
+                                                </div></div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                </div>
+            </div>
+        <h2>Parameter definitions</h2>
+        <table id="table-parameter-definitions" class="table">
+            <thead>
+            <tr>
+                <th class="sw-param-key"></th>
+                <th class="sw-param-name"></th>
+                <th class="sw-param-description"></th>
+                <th class="sw-param-type"></th>
+                <th class="sw-param-data-type"></th>
+                <th class="sw-param-annotation"></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                        <td><a name="/parameters/url"></a>url</td>
+                    <td>
+                        url
+                    <td><p>A single URL to query.</p>
+                </td>
+                    <td>query</td>
+                    <td><span class="json-property-type">string</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                    </td>
+                    <td>
+                            <span class="json-property-required"></span>
+                    </td>
+                </tr>
+                <tr>
+                        <td><a name="/parameters/closest"></a>closest</td>
+                    <td>
+                        closest
+                    <td><p>The direction specifies whether to match archived timestamps that are before the provided one, after, or the default either (closest in either direction). Must be before, after, or either. May be overidden by individual requests.</p>
+                </td>
+                    <td>query</td>
+                    <td><span class="json-property-type">string</span>    <span class="json-property-enum" title="Possible values">, x &isin; {
+                                <span class="json-property-enum-item">either</span>
+                                (default)
+                            ,
+                                <span class="json-property-enum-item">before</span>
+                            ,
+                                <span class="json-property-enum-item">after</span>
+                            
+                        }
+                        </span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                        <td><a name="/parameters/timestamp"></a>timestamp</td>
+                    <td>
+                        timestamp
+                    <td><p>Timestamp requested in ISO 8601 format. The following formats are acceptable:</p>
+                <ul>
+                <li>YYYY</li>
+                <li>YYYY-MM</li>
+                <li>YYYY-MM-DD</li>
+                <li>YYYY-MM-DDTHH:mm:SSz</li>
+                <li>YYYY-MM-DD:HH:mm+00:00</li>
+                </ul>
+                </td>
+                    <td>query</td>
+                    <td><span class="json-property-type">string</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                        <td><a name="/parameters/callback"></a>callback</td>
+                    <td>
+                        callback
+                    <td><p>Specifies a JavaScript function func, for a JSON-P response. When provided, results are wrapped as <code>callback(data)</code>, and the returned MIME type is application/javascript. This causes the caller to automatically run the func with the JSON results as its argument.</p>
+                </td>
+                    <td>query</td>
+                    <td><span class="json-property-type">string</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                        <td><a name="/parameters/timeout"></a>timeout</td>
+                    <td>
+                        timeout
+                    <td><p>Timeout is the maximum number of seconds to wait for the availability API to get its underlying results from the CDX server. The default value is 5.0.</p>
+                </td>
+                    <td>query</td>
+                    <td><span class="json-property-type">number</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                        <span class="json-property-default-value">5</span>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                        <td><a name="/parameters/status_code"></a>status_code</td>
+                    <td>
+                        status_code
+                    <td><p>HTTP status codes to filter by. Only results with these codes will be returned</p>
+                </td>
+                    <td>query</td>
+                    <td><span class="json-property-type">integer</span>    <span class="json-property-enum" title="Possible values">, x &isin; {
+                                <span class="json-property-enum-item">200</span>
+                            ,
+                                <span class="json-property-enum-item">201</span>
+                            ,
+                                <span class="json-property-enum-item">202</span>
+                            ,
+                                <span class="json-property-enum-item">203</span>
+                            ,
+                                <span class="json-property-enum-item">204</span>
+                            ,
+                                <span class="json-property-enum-item">205</span>
+                            ,
+                                <span class="json-property-enum-item">206</span>
+                            ,
+                                <span class="json-property-enum-item">300</span>
+                            ,
+                                <span class="json-property-enum-item">301</span>
+                            ,
+                                <span class="json-property-enum-item">302</span>
+                            ,
+                                <span class="json-property-enum-item">303</span>
+                            ,
+                                <span class="json-property-enum-item">304</span>
+                            ,
+                                <span class="json-property-enum-item">305</span>
+                            ,
+                                <span class="json-property-enum-item">306</span>
+                            ,
+                                <span class="json-property-enum-item">307</span>
+                            ,
+                                <span class="json-property-enum-item">308</span>
+                            ,
+                                <span class="json-property-enum-item">400</span>
+                            ,
+                                <span class="json-property-enum-item">401</span>
+                            ,
+                                <span class="json-property-enum-item">402</span>
+                            ,
+                                <span class="json-property-enum-item">403</span>
+                            ,
+                                <span class="json-property-enum-item">404</span>
+                            ,
+                                <span class="json-property-enum-item">405</span>
+                            ,
+                                <span class="json-property-enum-item">406</span>
+                            ,
+                                <span class="json-property-enum-item">407</span>
+                            ,
+                                <span class="json-property-enum-item">408</span>
+                            ,
+                                <span class="json-property-enum-item">409</span>
+                            ,
+                                <span class="json-property-enum-item">410</span>
+                            ,
+                                <span class="json-property-enum-item">411</span>
+                            ,
+                                <span class="json-property-enum-item">412</span>
+                            ,
+                                <span class="json-property-enum-item">413</span>
+                            ,
+                                <span class="json-property-enum-item">414</span>
+                            ,
+                                <span class="json-property-enum-item">415</span>
+                            ,
+                                <span class="json-property-enum-item">416</span>
+                            ,
+                                <span class="json-property-enum-item">417</span>
+                            ,
+                                <span class="json-property-enum-item">418</span>
+                            ,
+                                <span class="json-property-enum-item">421</span>
+                            ,
+                                <span class="json-property-enum-item">426</span>
+                            ,
+                                <span class="json-property-enum-item">428</span>
+                            ,
+                                <span class="json-property-enum-item">429</span>
+                            ,
+                                <span class="json-property-enum-item">431</span>
+                            ,
+                                <span class="json-property-enum-item">500</span>
+                            ,
+                                <span class="json-property-enum-item">501</span>
+                            ,
+                                <span class="json-property-enum-item">502</span>
+                            ,
+                                <span class="json-property-enum-item">503</span>
+                            ,
+                                <span class="json-property-enum-item">504</span>
+                            ,
+                                <span class="json-property-enum-item">505</span>
+                            ,
+                                <span class="json-property-enum-item">506</span>
+                            ,
+                                <span class="json-property-enum-item">507</span>
+                            ,
+                                <span class="json-property-enum-item">511</span>
+                            
+                        }
+                        </span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                <span class="sw-param-collection-format">, 
+                                multiple parameters (<code>status_code=aaa&amp;status_code=bbb</code>)
+                            </span>    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                        <td><a name="/parameters/tag"></a>tag</td>
+                    <td>
+                        tag
+                    <td><p>The optional tag can have any value, and is returned with the results; it can be used to help collate input and output values.</p>
+                </td>
+                    <td>query</td>
+                    <td><span class="json-property-type">string</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+     
+    <h2>Response definitions</h2>
+    
+    <dl id="sw-response-definitions">
+            <dt><a name=""></a>AvailabilityResults</dt>
+            <dd>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>Nominal Availability results</p>
+                
+                    </div>
+                </div>
+                <div class="row">
+                        <div class="col-md-6 sw-response-examples">
+                            <div class="label label-default">Example for applcation/json</div>
+                            <pre><code class="lang-json">{<br>    &quot;<span class="hljs-attribute">results</span>&quot;: <span class="hljs-value">[<br>        {<br>            &quot;<span class="hljs-attribute">snapshot</span>&quot;: <span class="hljs-value">{<br>                &quot;<span class="hljs-attribute">status</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;200&quot;</span></span>,<br>                &quot;<span class="hljs-attribute">timestamp</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;2016-04-07T19:39:18Z&quot;</span></span>,<br>                &quot;<span class="hljs-attribute">url</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;http://web.archive.org/web/20160111075133/http://entish.org/&quot;</span><br>            </span>}</span>,<br>            &quot;<span class="hljs-attribute">tag</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;0&quot;</span></span>,<br>            &quot;<span class="hljs-attribute">timestamp</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;2016-04-07T19:39:18Z&quot;</span></span>,<br>            &quot;<span class="hljs-attribute">url</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;http://www.entish.org&quot;</span><br>        </span>},<br>        {<br>            &quot;<span class="hljs-attribute">snapshot</span>&quot;: <span class="hljs-value">{<br>                &quot;<span class="hljs-attribute">timestamp</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;2016-04-13T13:20:39Z&quot;</span></span>,<br>                &quot;<span class="hljs-attribute">url</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;http://web.archive.org/web/20160413132039/http://www.cnn.com/&quot;</span><br>            </span>}</span>,<br>            &quot;<span class="hljs-attribute">tag</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;1&quot;</span></span>,<br>            &quot;<span class="hljs-attribute">url</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;http://www.cnn.com/&quot;</span><br>        </span>},<br>        {<br>            &quot;<span class="hljs-attribute">snapshot</span>&quot;: <span class="hljs-value">{<br>            }</span>,<br>            &quot;<span class="hljs-attribute">tag</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;2&quot;</span></span>,<br>            &quot;<span class="hljs-attribute">timestamp</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;2016-04-07T19:39:18Z&quot;</span></span>,<br>            &quot;<span class="hljs-attribute">url</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;http://www.youcantfindthis.cat&quot;</span><br>        </span>}<br>    ]<br></span>}
+                </code></pre>
+                
+                        </div>
+                    
+                    <div class="col-md-6 sw-response-model">
+                    <div  class="panel panel-definition">
+                        <div class="panel-body">
+                                    <a class="json-schema-ref" href="#/definitions/AvailabilityResults">AvailabilityResults</a>
+                        </div>
+                    </div></div>
+                
+                </div>        </dd>
+    </dl>
+    
+                       
+        <h2>Schema definitions</h2>
+    
+            
+                <div id="definition-ArchivedResult" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/ArchivedResult"></a>ArchivedResult:
+                                    <span class="json-property-type"><span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                            
+                                    <section class="json-schema-properties">
+                                        <dl>
+                                                <dt data-property-name="url">
+                                                    <span class="json-property-name">url:</span>
+                                                    <span class="json-property-type">string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                        <span class="json-property-required"></span>
+                                                </dt>
+                                                <dd>
+                                                    <p>The URL requested</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="timestamp">
+                                                    <span class="json-property-name">timestamp:</span>
+                                                    <span class="json-property-type">string</span>    <span class="json-property-format">(dateTime)</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                        <span class="json-property-required"></span>
+                                                </dt>
+                                                <dd>
+                                                    <p>The <em>intepreted</em> timestamp requested, in <a href="http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html">RFC 3339</a> format</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="tag">
+                                                    <span class="json-property-name">tag:</span>
+                                                    <span class="json-property-type">string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>The user-supplied tag for use in collation</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="snapshot">
+                                                    <span class="json-property-name">snapshot:</span>
+                                                    <span class="json-property-type">    <a class="json-schema-ref" href="#/definitions/Snapshot">Snapshot</a>
+                                                    </span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                        <span class="json-property-required"></span>
+                                                </dt>
+                                                <dd>
+                                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                        </dl>
+                                    </section>
+                    </div>
+                </div>        
+                <div id="definition-AvailabilityRequest" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/AvailabilityRequest"></a>AvailabilityRequest:
+                                    <span class="json-property-type"><span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                            
+                                    <section class="json-schema-properties">
+                                        <dl>
+                                                <dt data-property-name="url">
+                                                    <span class="json-property-name">url:</span>
+                                                    <span class="json-property-type">string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                        <span class="json-property-required"></span>
+                                                </dt>
+                                                <dd>
+                                                    <p>The URL requested</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="timestamp">
+                                                    <span class="json-property-name">timestamp:</span>
+                                                    <span class="json-property-type">string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Timestamp requested in ISO 8601 format. The following formats are acceptable: - YYYY - YYYY-MM - YYYY-MM-DD - YYYY-MM-DDTHH:mm:SSz - YYYY-MM-DD:HH:mm+00:00</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="tag">
+                                                    <span class="json-property-name">tag:</span>
+                                                    <span class="json-property-type">string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>A user-supplied tag, used for collation</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="closest">
+                                                    <span class="json-property-name">closest:</span>
+                                                    <span class="json-property-type">string</span>    <span class="json-property-enum" title="Possible values">, x &isin; {
+                                                                    <span class="json-property-enum-item">either</span>
+                                                                ,
+                                                                    <span class="json-property-enum-item">after</span>
+                                                                ,
+                                                                    <span class="json-property-enum-item">before</span>
+                                                                
+                                                            }
+                                                            </span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>The direction to find the closest snapshot to the requested timestamp</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                        </dl>
+                                    </section>
+                    </div>
+                </div>        
+                <div id="definition-AvailabilityRequests" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/AvailabilityRequests"></a>AvailabilityRequests:
+                                    <span class="json-property-type"><span class="json-property-type">object[]</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                                <section class="json-schema-example">
+                                    <pre><code class="lang-json">[<br>    {<br>        &quot;<span class="hljs-attribute">tag</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;0&quot;</span></span>,<br>        &quot;<span class="hljs-attribute">timestamp</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;2016-04-07T19:39:18Z&quot;</span></span>,<br>        &quot;<span class="hljs-attribute">url</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;http://www.entish.org&quot;</span><br>    </span>},<br>    {<br>        &quot;<span class="hljs-attribute">tag</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;1&quot;</span></span>,<br>        &quot;<span class="hljs-attribute">url</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;http://www.cnn.com/&quot;</span><br>    </span>},<br>    {<br>        &quot;<span class="hljs-attribute">tag</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;2&quot;</span></span>,<br>        &quot;<span class="hljs-attribute">timestamp</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;2016-04-07T19:39:18Z&quot;</span></span>,<br>        &quot;<span class="hljs-attribute">url</span>&quot;: <span class="hljs-value"><span class="hljs-string">&quot;http://www.youcantfindthis.cat&quot;</span><br>    </span>}<br>]
+                            </code></pre>
+                            
+                                </section>
+                            
+                                            <section class="json-schema-array-items">
+                                                <span class="json-property-type">    <a class="json-schema-ref" href="#/definitions/AvailabilityRequest">AvailabilityRequest</a>
+                                                </span>
+                                                <span class="json-property-range" title="Value limits"></span>
+                                                
+                                                <div class="json-inner-schema">
+                                                    
+                                                </div>
+                                            </section>    </div>
+                </div>        
+                <div id="definition-AvailabilityResults" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/AvailabilityResults"></a>AvailabilityResults:
+                                    <span class="json-property-type"><span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                            
+                                    <section class="json-schema-properties">
+                                        <dl>
+                                                <dt data-property-name="results">
+                                                    <span class="json-property-name">results:</span>
+                                                    <span class="json-property-type">object[]</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                        <span class="json-property-required"></span>
+                                                </dt>
+                                                <dd>
+                                                    <p>A list of results</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                                        <section class="json-schema-array-items">
+                                                                            <span class="json-property-type">    <a class="json-schema-ref" href="#/definitions/ArchivedResult">ArchivedResult</a>
+                                                                            </span>
+                                                                            <span class="json-property-range" title="Value limits"></span>
+                                                                            
+                                                                            <div class="json-inner-schema">
+                                                                                
+                                                                            </div>
+                                                                        </section>                </div>
+                                                </dd>
+                                        </dl>
+                                    </section>
+                    </div>
+                </div>        
+                <div id="definition-Error" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/Error"></a>Error:
+                                    <span class="json-property-type"><span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                            
+                                    <section class="json-schema-properties">
+                                        <dl>
+                                                <dt data-property-name="code">
+                                                    <span class="json-property-name">code:</span>
+                                                    <span class="json-property-type">integer</span>    <span class="json-property-format">(integer)</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="message">
+                                                    <span class="json-property-name">message:</span>
+                                                    <span class="json-property-type">string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                        </dl>
+                                    </section>
+                    </div>
+                </div>        
+                <div id="definition-Snapshot" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/Snapshot"></a>Snapshot:
+                                    <span class="json-property-type"><span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                            
+                                    <section class="json-schema-properties">
+                                        <dl>
+                                                <dt data-property-name="url">
+                                                    <span class="json-property-name">url:</span>
+                                                    <span class="json-property-type">string</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>The URL requested</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="timestamp">
+                                                    <span class="json-property-name">timestamp:</span>
+                                                    <span class="json-property-type">string</span>    <span class="json-property-format">(dateTime)</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>The timestamp of the snapshot in <a href="http://xml2rfc.ietf.org/public/rfc/html/rfc3339.html">RFC 3339</a> format</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="status">
+                                                    <span class="json-property-name">status:</span>
+                                                    <span class="json-property-type">integer</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>The HTTP status of the URL requested</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                        </dl>
+                                    </section>
+                    </div>
+                </div>
+</div>
+</body>
+</html>
