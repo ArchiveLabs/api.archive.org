@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <title>Search Services</title>
+</head>
+<body>
+<div class="container">
+    <h1>Search Services</h1>
+    <p><p>API for Internet Archive&#39;s Search-related services</p>
+    </p>
+    
+        <div id="sw-default-produces" class="sw-default-value">
+            <span class="sw-default-value-header">Default response content-types:</span>
+            application/json, application/javascript
+        </div>
+    
+    <div id="sw-schemes" class="sw-default-value">
+        <span class="sw-default-value-header">Schemes:</span>
+        https
+    </div>
+    
+        <h2 id="swagger--summary-no-tags">Summary</h2>
+        <table class="table table-bordered table-condensed swagger--summary">
+            <thead>
+            <tr>
+                <th>Path</th>
+                <th>Operation</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                            <td class="swagger--summary-path" rowspan="1">
+                                <a href="#path--search-v1-fields">/search/v1/fields</a>
+                            </td>
+                        <td>
+                            <a href="#operation--search-v1-fields-get">GET</a>
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                            <td class="swagger--summary-path" rowspan="1">
+                                <a href="#path--search-v1-organic">/search/v1/organic</a>
+                            </td>
+                        <td>
+                            <a href="#operation--search-v1-organic-get">GET</a>
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                            <td class="swagger--summary-path" rowspan="1">
+                                <a href="#path--search-v1-scrape">/search/v1/scrape</a>
+                            </td>
+                        <td>
+                            <a href="#operation--search-v1-scrape-get">GET</a>
+                        </td>
+                        <td>
+                            
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+    
+    
+    
+    <h2>Paths</h2>
+    
+        
+        <span id="path--search-v1-fields"></span>
+            <div id="operation--search-v1-fields-get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary"></div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/search/v1/fields</strong></h3>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Fields that can be requested</p>
+            
+                    </section>
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                callback
+                                            <td><p>Specifies a JavaScript function func, for a JSON-P response. When provided, results are wrapped as <code>callback(data)</code>, and the returned MIME type is application/javascript. This causes the caller to automatically run the func with the JSON results as its argument.</p>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/callback">#/parameters/callback</a></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                                <p><a href="#sw-default-produces">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> <span class="label label-default">application/javascript</span> 
+                                </p>
+                            
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Fields that can be requested</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                                <div  class="panel panel-definition">
+                                                    <div class="panel-body">
+                                                            
+                                                                            <section class="json-schema-array-items">
+                                                                                <span class="json-property-type">    <a class="json-schema-ref" href="#/definitions/Field">Field</a>
+                                                                                </span>
+                                                                                <span class="json-property-range" title="Value limits"></span>
+                                                                                
+                                                                                <div class="json-inner-schema">
+                                                                                    
+                                                                                </div>
+                                                                            </section>    </div>
+                                                </div></div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                </div>
+            </div>    
+        <span id="path--search-v1-organic"></span>
+            <div id="operation--search-v1-organic-get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary"></div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/search/v1/organic</strong></h3>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Return relevance-based results from search queries</p>
+            
+                    </section>
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                q
+                                            <td><p>Lucene-type search query</p>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/query">#/parameters/query</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                field
+                                            <td><p>Metadata field</p>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                                <span class="json-property-default-value">identifier</span>
+                                            <span class="json-property-range" title="String length limits">
+                                                    (1 to 250 chars)
+                                            </span>
+                                        <span class="sw-param-collection-format">, 
+                                                        multiple parameters (<code>field=aaa&amp;field=bbb</code>)
+                                                    </span>    </td>
+                                            <td>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/field">#/parameters/field</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                size
+                                            <td><p>Number of query results to return</p>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">integer</span>
+                                        <span class="json-property-range" title="Value limits">, { x ∈ ℤ | 10 ≤ x ≤ 10000 }</span>
+                                        
+                                                <span class="json-property-default-value">1000</span>
+                                            </td>
+                                            <td>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/size">#/parameters/size</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                total_only
+                                            <td><p>Request total only; do not return hits</p>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">boolean</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/total_only">#/parameters/total_only</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                callback
+                                            <td><p>Specifies a JavaScript function func, for a JSON-P response. When provided, results are wrapped as <code>callback(data)</code>, and the returned MIME type is application/javascript. This causes the caller to automatically run the func with the JSON results as its argument.</p>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/callback">#/parameters/callback</a></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                                <p><a href="#sw-default-produces">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> <span class="label label-default">application/javascript</span> 
+                                </p>
+                            
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Organic Search API. Returns results in descending relevance order</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                                <div  class="panel panel-definition">
+                                                    <div class="panel-body">
+                                                                <a class="json-schema-ref" href="#/definitions/OrganicResult">OrganicResult</a>
+                                                    </div>
+                                                </div></div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected error</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                                <div  class="panel panel-definition">
+                                                    <div class="panel-body">
+                                                                <a class="json-schema-ref" href="#/definitions/Error">Error</a>
+                                                    </div>
+                                                </div></div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                </div>
+            </div>    
+        <span id="path--search-v1-scrape"></span>
+            <div id="operation--search-v1-scrape-get" class="swagger--panel-operation-get panel">
+                <div class="panel-heading">
+                    <div class="operation-summary"></div>
+                    <h3 class="panel-title"><span class="operation-name">GET</span> <strong>/search/v1/scrape</strong></h3>
+                </div>
+                <div class="panel-body">
+                    <section class="sw-operation-description">
+                        <p>Scrape search results from Internet Archive, allowing a scrolling cursor</p>
+            
+                    </section>
+                    
+                        <section class="sw-request-params">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th class="sw-param-name"></th>
+                                    <th class="sw-param-description"></th>
+                                    <th class="sw-param-type"></th>
+                                    <th class="sw-param-data-type"></th>
+                                    <th class="sw-param-annotation"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                        <tr>
+                                            <td>
+                                                q
+                                            <td><p>Lucene-type search query</p>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/query">#/parameters/query</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                field
+                                            <td><p>Metadata field</p>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                                <span class="json-property-default-value">identifier</span>
+                                            <span class="json-property-range" title="String length limits">
+                                                    (1 to 250 chars)
+                                            </span>
+                                        <span class="sw-param-collection-format">, 
+                                                        multiple parameters (<code>field=aaa&amp;field=bbb</code>)
+                                                    </span>    </td>
+                                            <td>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/field">#/parameters/field</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                sort
+                                            <td><p>sort collations</p>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            <span class="json-property-range" title="String length limits">
+                                                    (5 to 250 chars)
+                                            </span>
+                                        <span class="sw-param-collection-format">, 
+                                                        multiple parameters (<code>sort=aaa&amp;sort=bbb</code>)
+                                                    </span>    </td>
+                                            <td>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/sort">#/parameters/sort</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                size
+                                            <td><p>Number of query results to return</p>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">integer</span>
+                                        <span class="json-property-range" title="Value limits">, { x ∈ ℤ | 10 ≤ x ≤ 10000 }</span>
+                                        
+                                                <span class="json-property-default-value">1000</span>
+                                            </td>
+                                            <td>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/size">#/parameters/size</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                cursor
+                                            <td><p>Cursor for scrolling (used for subsequent calls)</p>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/cursor">#/parameters/cursor</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                total_only
+                                            <td><p>Request total only; do not return hits</p>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">boolean</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/total_only">#/parameters/total_only</a></span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                callback
+                                            <td><p>Specifies a JavaScript function func, for a JSON-P response. When provided, results are wrapped as <code>callback(data)</code>, and the returned MIME type is application/javascript. This causes the caller to automatically run the func with the JSON results as its argument.</p>
+                                        </td>
+                                            <td>query</td>
+                                            <td><span class="json-property-type">string</span>
+                                        <span class="json-property-range" title="Value limits"></span>
+                                        
+                                            </td>
+                                            <td>
+                                                    <span class="swagger--global"></span> <span class="json-schema--reference"><a href="#/parameters/callback">#/parameters/callback</a></span>
+                                            </td>
+                                        </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                    
+                        <section class="sw-responses">
+                                <p><a href="#sw-default-produces">Uses default content-types: </a>
+                                    <span class="label label-default">application/json</span> <span class="label label-default">application/javascript</span> 
+                                </p>
+                            
+                            <dl>
+                                    <dt class="sw-response-200">
+                                        200 OK
+                                    
+                                    </dt>
+                                    <dd class="sw-response-200">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Scaping API</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                                <div  class="panel panel-definition">
+                                                    <div class="panel-body">
+                                                                <a class="json-schema-ref" href="#/definitions/ScrapeResult">ScrapeResult</a>
+                                                    </div>
+                                                </div></div>
+                                            
+                                            </div>                </dd>
+                                    <dt class="sw-response-default">
+                                        default 
+                                    
+                                    </dt>
+                                    <dd class="sw-response-default">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <p>Unexpected error</p>
+                                            
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                
+                                                <div class="col-md-6 sw-response-model">
+                                                <div  class="panel panel-definition">
+                                                    <div class="panel-body">
+                                                                <a class="json-schema-ref" href="#/definitions/Error">Error</a>
+                                                    </div>
+                                                </div></div>
+                                            
+                                            </div>                </dd>
+                            </dl>
+                        </section>
+                </div>
+            </div>
+        <h2>Parameter definitions</h2>
+        <table id="table-parameter-definitions" class="table">
+            <thead>
+            <tr>
+                <th class="sw-param-key"></th>
+                <th class="sw-param-name"></th>
+                <th class="sw-param-description"></th>
+                <th class="sw-param-type"></th>
+                <th class="sw-param-data-type"></th>
+                <th class="sw-param-annotation"></th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                        <td><a name="/parameters/query"></a>query</td>
+                    <td>
+                        q
+                    <td><p>Lucene-type search query</p>
+                </td>
+                    <td>query</td>
+                    <td><span class="json-property-type">string</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                        <td><a name="/parameters/field"></a>field</td>
+                    <td>
+                        field
+                    <td><p>Metadata field</p>
+                </td>
+                    <td>query</td>
+                    <td><span class="json-property-type">string</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                        <span class="json-property-default-value">identifier</span>
+                    <span class="json-property-range" title="String length limits">
+                            (1 to 250 chars)
+                    </span>
+                <span class="sw-param-collection-format">, 
+                                multiple parameters (<code>field=aaa&amp;field=bbb</code>)
+                            </span>    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                        <td><a name="/parameters/sort"></a>sort</td>
+                    <td>
+                        sort
+                    <td><p>sort collations</p>
+                </td>
+                    <td>query</td>
+                    <td><span class="json-property-type">string</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                    <span class="json-property-range" title="String length limits">
+                            (5 to 250 chars)
+                    </span>
+                <span class="sw-param-collection-format">, 
+                                multiple parameters (<code>sort=aaa&amp;sort=bbb</code>)
+                            </span>    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                        <td><a name="/parameters/size"></a>size</td>
+                    <td>
+                        size
+                    <td><p>Number of query results to return</p>
+                </td>
+                    <td>query</td>
+                    <td><span class="json-property-type">integer</span>
+                <span class="json-property-range" title="Value limits">, { x ∈ ℤ | 10 ≤ x ≤ 10000 }</span>
+                
+                        <span class="json-property-default-value">1000</span>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                        <td><a name="/parameters/cursor"></a>cursor</td>
+                    <td>
+                        cursor
+                    <td><p>Cursor for scrolling (used for subsequent calls)</p>
+                </td>
+                    <td>query</td>
+                    <td><span class="json-property-type">string</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                        <td><a name="/parameters/total_only"></a>total_only</td>
+                    <td>
+                        total_only
+                    <td><p>Request total only; do not return hits</p>
+                </td>
+                    <td>query</td>
+                    <td><span class="json-property-type">boolean</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                <tr>
+                        <td><a name="/parameters/callback"></a>callback</td>
+                    <td>
+                        callback
+                    <td><p>Specifies a JavaScript function func, for a JSON-P response. When provided, results are wrapped as <code>callback(data)</code>, and the returned MIME type is application/javascript. This causes the caller to automatically run the func with the JSON results as its argument.</p>
+                </td>
+                    <td>query</td>
+                    <td><span class="json-property-type">string</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+     
+    
+                       
+        <h2>Schema definitions</h2>
+    
+            
+                <div id="definition-Cursor" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/Cursor"></a>Cursor:
+                                    <span class="json-property-type"><span class="json-property-type">string</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                                <section class="json-schema-description">
+                                    <p>A scroll handle</p>
+                            
+                                </section>
+                            
+                    </div>
+                </div>        
+                <div id="definition-Error" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/Error"></a>Error:
+                                    <span class="json-property-type"><span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                            
+                                <section class="json-schema-properties">
+                                    <dl>
+                                            <dt data-property-name="code">
+                                                <span class="json-property-name">code:</span>
+                                                <span class="json-property-type">integer</span>    <span class="json-property-format">(int32)</span>
+                                                <span class="json-property-range" title="Value limits"></span>
+                                                
+                                            </dt>
+                                            <dd>
+                                                
+                                                <div class="json-inner-schema">
+                                                    
+                                                </div>
+                                            </dd>
+                                            <dt data-property-name="message">
+                                                <span class="json-property-name">message:</span>
+                                                <span class="json-property-type">string</span>
+                                                <span class="json-property-range" title="Value limits"></span>
+                                                
+                                            </dt>
+                                            <dd>
+                                                
+                                                <div class="json-inner-schema">
+                                                    
+                                                </div>
+                                            </dd>
+                                    </dl>
+                                </section>
+                    </div>
+                </div>        
+                <div id="definition-Field" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/Field"></a>Field:
+                                    <span class="json-property-type"><span class="json-property-type">string</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                                <section class="json-schema-description">
+                                    <p>The name of a field</p>
+                            
+                                </section>
+                            
+                    </div>
+                </div>        
+                <div id="definition-Hit" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/Hit"></a>Hit:
+                                    <span class="json-property-type"><span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                                <section class="json-schema-description">
+                                    <p>One item returned (object of fields and values)</p>
+                            
+                                </section>
+                            
+                    </div>
+                </div>        
+                <div id="definition-OrganicResult" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/OrganicResult"></a>OrganicResult:
+                                    <span class="json-property-type"><span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                                <section class="json-schema-description">
+                                    <p>The result of a organic search request</p>
+                            
+                                </section>
+                            
+                                    <section class="json-schema-properties">
+                                        <dl>
+                                                <dt data-property-name="count">
+                                                    <span class="json-property-name">count:</span>
+                                                    <span class="json-property-type">integer</span>
+                                                    <span class="json-property-range" title="Value limits">, { x ∈ ℤ | 0 ≤ x ≤ 10000 }</span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Number of results returned</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="total">
+                                                    <span class="json-property-name">total:</span>
+                                                    <span class="json-property-type">integer</span>
+                                                    <span class="json-property-range" title="Value limits">, { x ∈ ℤ | x ≥ 0 }</span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Approximate number of results meeting query</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="items">
+                                                    <span class="json-property-name">items:</span>
+                                                    <span class="json-property-type">object[]</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                                        <section class="json-schema-array-items">
+                                                                            <span class="json-property-type">    <a class="json-schema-ref" href="#/definitions/Hit">Hit</a>
+                                                                            </span>
+                                                                            <span class="json-property-range" title="Value limits"></span>
+                                                                            
+                                                                            <div class="json-inner-schema">
+                                                                                
+                                                                            </div>
+                                                                        </section>                </div>
+                                                </dd>
+                                        </dl>
+                                    </section>
+                    </div>
+                </div>        
+                <div id="definition-ScrapeResult" class="panel panel-definition">
+                        <div class="panel-heading">
+                                <h3 class="panel-title"><a name="/definitions/ScrapeResult"></a>ScrapeResult:
+                                    <span class="json-property-type"><span class="json-property-type">object</span>
+                <span class="json-property-range" title="Value limits"></span>
+                
+                </span>
+                                </h3>
+                        </div>
+                    <div class="panel-body">
+                                <section class="json-schema-description">
+                                    <p>The result of a scrape request</p>
+                            
+                                </section>
+                            
+                                    <section class="json-schema-properties">
+                                        <dl>
+                                                <dt data-property-name="cursor">
+                                                    <span class="json-property-name">cursor:</span>
+                                                    <span class="json-property-type">    <a class="json-schema-ref" href="#/definitions/Cursor">Cursor</a>
+                                                    </span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="previous">
+                                                    <span class="json-property-name">previous:</span>
+                                                    <span class="json-property-type">    <a class="json-schema-ref" href="#/definitions/Cursor">Cursor</a>
+                                                    </span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="count">
+                                                    <span class="json-property-name">count:</span>
+                                                    <span class="json-property-type">integer</span>
+                                                    <span class="json-property-range" title="Value limits">, { x ∈ ℤ | 0 ≤ x ≤ 10000 }</span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Number of results returned</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="total">
+                                                    <span class="json-property-name">total:</span>
+                                                    <span class="json-property-type">integer</span>
+                                                    <span class="json-property-range" title="Value limits">, { x ∈ ℤ | x ≥ 0 }</span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    <p>Total number of results from this cursor point</p>
+                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                    </div>
+                                                </dd>
+                                                <dt data-property-name="items">
+                                                    <span class="json-property-name">items:</span>
+                                                    <span class="json-property-type">object[]</span>
+                                                    <span class="json-property-range" title="Value limits"></span>
+                                                    
+                                                </dt>
+                                                <dd>
+                                                    
+                                                    <div class="json-inner-schema">
+                                                        
+                                                                        <section class="json-schema-array-items">
+                                                                            <span class="json-property-type">    <a class="json-schema-ref" href="#/definitions/Hit">Hit</a>
+                                                                            </span>
+                                                                            <span class="json-property-range" title="Value limits"></span>
+                                                                            
+                                                                            <div class="json-inner-schema">
+                                                                                
+                                                                            </div>
+                                                                        </section>                </div>
+                                                </dd>
+                                        </dl>
+                                    </section>
+                    </div>
+                </div>
+</div>
+</body>
+</html>

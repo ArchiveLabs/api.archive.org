@@ -3,16 +3,21 @@
     "info": {
         "version": "1.0.0",
         "title": "Search Services",
-        "description": "#### Search services\nArchive.org Search API\n"
+        "description": "API for Internet Archive's Search-related services\n"
     },
     "schemes": [
         "https"
     ],
-    "host": "archive.org",
-    "basePath": "/services/search/beta",
+    "host": "api.archive.org",
+    "basePath": "/",
+    "produces": [
+        "application/json",
+        "application/javascript"
+    ],
     "paths": {
-        "/scrape.php": {
-            "post": {
+        "/search/v1/scrape": {
+            "get": {
+                "description": "Scrape search results from Internet Archive, allowing a scrolling cursor\n",
                 "responses": {
                     "200": {
                         "description": "Scaping API",
@@ -29,67 +34,32 @@
                 },
                 "parameters": [
                     {
-                        "name": "q",
-                        "in": "query",
-                        "description": "Lucene-type search query",
-                        "type": "string"
+                        "$ref": "#/parameters/query"
                     },
                     {
-                        "name": "fields",
-                        "in": "query",
-                        "description": "Metadata fields, comma delimited",
-                        "type": "string",
-                        "default": "identifier",
-                        "required": false,
-                        "minLength": 1,
-                        "maxLength": 250
+                        "$ref": "#/parameters/field"
                     },
                     {
-                        "name": "sorts",
-                        "in": "query",
-                        "description": "sort collations, comma delimited",
-                        "type": "string",
-                        "required": false,
-                        "minLength": 5,
-                        "maxLength": 250
+                        "$ref": "#/parameters/sort"
                     },
                     {
-                        "name": "size",
-                        "in": "query",
-                        "description": "Number of query results to return",
-                        "type": "integer",
-                        "minimum": 10,
-                        "maximum": 10000,
-                        "default": 1000,
-                        "required": false
+                        "$ref": "#/parameters/size"
                     },
                     {
-                        "name": "cursor",
-                        "in": "query",
-                        "description": "Cursor for scrolling (used for subsequent calls)",
-                        "type": "string",
-                        "required": false
+                        "$ref": "#/parameters/cursor"
                     },
                     {
-                        "name": "total_only",
-                        "in": "query",
-                        "description": "Request total only; do not return hits",
-                        "type": "bool",
-                        "default": false,
-                        "required": false
+                        "$ref": "#/parameters/total_only"
                     },
                     {
-                        "name": "key",
-                        "in": "formData",
-                        "description": "S3 key",
-                        "type": "string",
-                        "required": false
+                        "$ref": "#/parameters/callback"
                     }
                 ]
             }
         },
-        "/organic.php": {
-            "post": {
+        "/search/v1/organic": {
+            "get": {
+                "description": "Return relevance-based results from search queries\n",
                 "responses": {
                     "200": {
                         "description": "Organic Search API. Returns results in descending relevance order",
@@ -106,43 +76,31 @@
                 },
                 "parameters": [
                     {
-                        "name": "q",
-                        "in": "query",
-                        "description": "Lucene-type search query",
-                        "type": "string"
+                        "$ref": "#/parameters/query"
                     },
                     {
-                        "name": "fields",
-                        "in": "query",
-                        "description": "Metadata fields, comma delimited",
-                        "type": "string",
-                        "default": "identifier",
-                        "required": false,
-                        "minLength": 1,
-                        "maxLength": 250
+                        "$ref": "#/parameters/field"
                     },
                     {
-                        "name": "size",
-                        "in": "query",
-                        "description": "Number of query results to return",
-                        "type": "integer",
-                        "minimum": 1,
-                        "maximum": 10000,
-                        "default": 100,
-                        "required": false
+                        "$ref": "#/parameters/size"
                     },
                     {
-                        "name": "key",
-                        "in": "formData",
-                        "description": "S3 key",
-                        "type": "string",
-                        "required": false
+                        "$ref": "#/parameters/total_only"
+                    },
+                    {
+                        "$ref": "#/parameters/callback"
                     }
                 ]
             }
         },
-        "/fields.php": {
+        "/search/v1/fields": {
             "get": {
+                "description": "Fields that can be requested",
+                "parameters": [
+                    {
+                        "$ref": "#/parameters/callback"
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Fields that can be requested",
@@ -155,6 +113,67 @@
                     }
                 }
             }
+        }
+    },
+    "parameters": {
+        "query": {
+            "name": "q",
+            "in": "query",
+            "description": "Lucene-type search query",
+            "type": "string"
+        },
+        "field": {
+            "name": "field",
+            "in": "query",
+            "description": "Metadata field",
+            "type": "string",
+            "default": "identifier",
+            "required": false,
+            "minLength": 1,
+            "maxLength": 250,
+            "collectionFormat": "multi"
+        },
+        "sort": {
+            "name": "sort",
+            "in": "query",
+            "description": "sort collations",
+            "type": "string",
+            "required": false,
+            "minLength": 5,
+            "maxLength": 250,
+            "collectionFormat": "multi"
+        },
+        "size": {
+            "name": "size",
+            "in": "query",
+            "description": "Number of query results to return",
+            "type": "integer",
+            "minimum": 10,
+            "maximum": 10000,
+            "default": 1000,
+            "required": false
+        },
+        "cursor": {
+            "name": "cursor",
+            "in": "query",
+            "description": "Cursor for scrolling (used for subsequent calls)",
+            "type": "string",
+            "required": false
+        },
+        "total_only": {
+            "name": "total_only",
+            "in": "query",
+            "description": "Request total only; do not return hits",
+            "type": "boolean",
+            "default": false,
+            "required": false
+        },
+        "callback": {
+            "name": "callback",
+            "description": "Specifies a JavaScript function func, for a JSON-P response. When provided, results are wrapped as `callback(data)`, and the returned MIME type is application/javascript. This causes the caller to automatically run the func with the JSON results as its argument.",
+            "in": "query",
+            "type": "string",
+            "required": false
         }
     },
     "definitions": {
